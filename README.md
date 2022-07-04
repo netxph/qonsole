@@ -1,0 +1,2 @@
+# qonsole
+Quick Console
