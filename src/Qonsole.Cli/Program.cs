@@ -1,10 +1,9 @@
 ﻿using Qonsole.Cli;
 
-Console.WriteLine("Qonsole Demo Cli");
-
 QApp app = new AppBuilder()
+	.Describe("Qonsole Demo Cli")
     .AddTypeActions(
         new ShoutCommand(),
         new GreetCommand());
 
-app.Run();
+return app.Run(args);
