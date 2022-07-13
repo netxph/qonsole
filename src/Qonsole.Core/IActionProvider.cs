@@ -1,6 +1,6 @@
 using System.CommandLine;
 
-namespace Qonsole.Cli;
+namespace Qonsole.Core;
 
 public interface IActionProvider
 {

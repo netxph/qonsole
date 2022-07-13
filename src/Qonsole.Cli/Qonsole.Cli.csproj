@@ -11,4 +11,8 @@
     <PackageReference Include="system.commandline" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Qonsole.Core\Qonsole.Core.csproj" />
+  </ItemGroup>
+
 </Project>

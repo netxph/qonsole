@@ -1,4 +1,4 @@
-namespace Qonsole.Cli;
+namespace Qonsole.Core;
 
 public class AppBuilder
 {
