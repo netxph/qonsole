@@ -8,4 +8,4 @@ QApp app = new AppBuilder()
         new GreetCommand(),
         new HostedCommand());
 
-return app.Run(args);
+return await app.RunAsync(args);

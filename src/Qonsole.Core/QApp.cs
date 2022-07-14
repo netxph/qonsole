@@ -7,10 +7,10 @@ public class QApp
     public string Description { get; }
     public IEnumerable<IActionProvider> Providers { get; }
 
-	public QApp(IEnumerable<IActionProvider> providers)
-		: this(string.Empty, providers)
-	{
-	}
+    public QApp(IEnumerable<IActionProvider> providers)
+        : this(string.Empty, providers)
+    {
+    }
 
     public QApp(string description, IEnumerable<IActionProvider> providers)
     {
@@ -18,7 +18,7 @@ public class QApp
         Providers = providers ?? new List<IActionProvider>();
     }
 
-    public int Run(string[] args)
+    public async Task<int> RunAsync(string[] args)
     {
         var root = new RootCommand(Description);
 
@@ -26,12 +26,12 @@ public class QApp
         {
             var commands = provider.GetCommands();
 
-			foreach (var command in commands)
-			{
-				root.AddCommand(command);
-			}
+            foreach (var command in commands)
+            {
+                root.AddCommand(command);
+            }
         }
 
-		return root.InvokeAsync(args).Result;
+        return await root.InvokeAsync(args);
     }
 }
