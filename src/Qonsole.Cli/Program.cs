@@ -6,6 +6,7 @@ QApp app = new AppBuilder()
     .AddTypeActions(
         new ShoutCommand(),
         new GreetCommand(),
-        new HostedCommand());
+        new HostedCommand())
+    .AddExecutableActions("qapp-");
 
 return await app.RunAsync(args);
