@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Qonsole.Core\Qonsole.Core.csproj" />
+    <ProjectReference Include="..\Qonsole.Sample\Qonsole.Sample.csproj" />
   </ItemGroup>
 
 </Project>

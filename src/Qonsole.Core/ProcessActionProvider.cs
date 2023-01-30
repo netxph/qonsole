@@ -1,4 +1,5 @@
 using System.CommandLine;
+using System.Reflection;
 
 namespace Qonsole.Core;
 
@@ -18,6 +19,16 @@ public class ProcessActionProvider : IActionProvider
 
     public IEnumerable<Command> GetCommands()
     {
+        var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
+        Console.WriteLine(path);
+
+        var pattern = $"{_prefix}*.exe";
+        Console.WriteLine(pattern);
+
+        var files = Directory.GetFiles(path, pattern);
+
+        files.ToList().ForEach(f => Console.WriteLine(f));
+
         return new List<Command>();
     }
 }
