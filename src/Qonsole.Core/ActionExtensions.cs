@@ -16,13 +16,16 @@ public static class TypeActionProviderExtensions
 
     public static AppBuilder AddExecutableActions(this AppBuilder builder)
     {
-        var prefix = Assembly.GetExecutingAssembly().GetName().Name ?? string.Empty;
+        var name = Assembly.GetEntryAssembly()?.GetName();
+        var prefix = name?.Name ?? string.Empty;
 
-        return AddExecutableActions(builder, prefix);
+        return AddExecutableActions(builder, $"{prefix}-");
     }
 
     public static AppBuilder AddExecutableActions(this AppBuilder builder, string prefix)
     {
+        builder.AddActionProvider(
+            new ProcessActionProvider(prefix));
 
         return builder;
     }
