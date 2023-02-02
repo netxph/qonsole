@@ -20,14 +20,16 @@ public class ProcessActionProvider : IActionProvider
     public IEnumerable<Command> GetCommands()
     {
         var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
-        Console.WriteLine(path);
-
         var pattern = $"{_prefix}*.exe";
-        Console.WriteLine(pattern);
 
         var files = Directory.GetFiles(path, pattern);
 
-        files.ToList().ForEach(f => Console.WriteLine(f));
+        files.ToList().ForEach(f => {
+            var name = Path.GetFileNameWithoutExtension(f);
+            var splitName = name.Split("-");
+
+            Console.WriteLine(splitName[1]);
+        });
 
         return new List<Command>();
     }
