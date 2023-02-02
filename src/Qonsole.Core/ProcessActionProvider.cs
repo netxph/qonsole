@@ -1,4 +1,5 @@
 using System.CommandLine;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace Qonsole.Core;
@@ -24,13 +25,12 @@ public class ProcessActionProvider : IActionProvider
 
         var files = Directory.GetFiles(path, pattern);
 
-        files.ToList().ForEach(f => {
-            var name = Path.GetFileNameWithoutExtension(f);
-            var splitName = name.Split("-");
+        return files.ToList().Select(f => {
+            var name = Path.GetFileNameWithoutExtension(f).Split("-")[1];
 
-            Console.WriteLine(splitName[1]);
-        });
+            var info = FileVersionInfo.GetVersionInfo(f);
 
-        return new List<Command>();
+            return new Command(name, info.FileDescription);
+        }).ToList();
     }
 }
