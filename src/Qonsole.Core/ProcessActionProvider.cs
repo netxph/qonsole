@@ -30,7 +30,9 @@ public class ProcessActionProvider : IActionProvider
 
             var info = FileVersionInfo.GetVersionInfo(f);
 
-            return new Command(name, info.FileDescription);
+            var command = new Command(name, info.FileDescription);
+
+            return command;
         }).ToList();
     }
 }
